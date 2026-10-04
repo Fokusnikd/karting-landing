@@ -1,0 +1,53 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-asphalt: #0d0e10;
+  --color-carbon: #16181c;
+  --color-steel: #24272d;
+  --color-mist: #9aa0a8;
+  --color-chalk: #f4f4f1;
+  --color-volt: #ffd400;
+  --color-volt-dark: #e6bf00;
+  --color-signal: #ff3b30;
+
+  --font-display: 'Russo One', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Golos Text', ui-sans-serif, system-ui, sans-serif;
+
+  --animate-marquee: marquee 26s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* Start/finish flag pattern */
+@utility checkered {
+  background-image: conic-gradient(#f4f4f1 25%, #0d0e10 0 50%, #f4f4f1 0 75%, #0d0e10 0);
+  background-size: 14px 14px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-asphalt font-sans text-chalk antialiased;
+  }
+
+  ::selection {
+    @apply bg-volt text-asphalt;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
