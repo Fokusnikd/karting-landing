@@ -34,10 +34,10 @@ export function SectionHeading({
         <span className="h-0.5 w-8 bg-volt" />
         {eyebrow}
       </p>
-      <h2 id={id} className="mt-4 font-display text-[2rem] uppercase leading-none sm:text-5xl">
+      <h2 id={id} className="mt-4 font-display text-[1.65rem] uppercase leading-tight break-words sm:text-[2rem] lg:text-5xl">
         {title}
       </h2>
-      {intro && <p className="mt-5 text-lg text-mist">{intro}</p>}
+      {intro && <p className="mt-5 text-base leading-relaxed text-mist sm:text-lg">{intro}</p>}
     </div>
   )
 }

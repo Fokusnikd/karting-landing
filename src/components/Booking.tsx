@@ -88,26 +88,26 @@ export function Booking({ value, onChange }: { value: BookingChoice; onChange: (
       <Container>
         <div className="overflow-hidden rounded-3xl border border-chalk/10 bg-carbon">
           <div aria-hidden="true" className="checkered h-3.5 opacity-90" />
-          <div className="grid gap-10 p-5 sm:p-10 lg:grid-cols-[0.8fr_1.2fr] lg:p-12">
-            <div>
+          <div className="grid min-w-0 gap-10 p-4 sm:p-10 lg:grid-cols-[0.8fr_1.2fr] lg:p-12">
+            <div className="min-w-0">
               <SectionHeading
                 id="booking-title"
                 eyebrow="Запись"
                 title="Займите место на стартовой решётке"
                 intro="Выберите формат, день и время — администратор подтвердит бронь звонком."
               />
-              <dl className="mt-8 grid gap-3 rounded-2xl bg-asphalt p-5">
+              <dl className="mt-8 grid gap-3 rounded-2xl bg-asphalt p-4 sm:p-5">
                 <div className="flex justify-between gap-4">
-                  <dt className="text-mist">Формат</dt>
-                  <dd className="font-semibold">{format.name}</dd>
+                  <dt className="shrink-0 text-mist">Формат</dt>
+                  <dd className="min-w-0 text-right font-semibold">{format.name}</dd>
                 </div>
                 <div className="flex justify-between gap-4">
-                  <dt className="text-mist">Пилотов</dt>
-                  <dd className="font-semibold">{value.racers}</dd>
+                  <dt className="shrink-0 text-mist">Пилотов</dt>
+                  <dd className="font-semibold tabular-nums">{value.racers}</dd>
                 </div>
                 <div className="flex items-baseline justify-between gap-4 border-t border-chalk/10 pt-3">
-                  <dt className="text-mist">Итого</dt>
-                  <dd className="relative overflow-hidden font-display text-3xl text-volt">
+                  <dt className="shrink-0 text-mist">Итого</dt>
+                  <dd className="relative min-w-0 overflow-hidden font-display text-2xl text-volt sm:text-3xl">
                     <AnimatePresence mode="popLayout" initial={false}>
                       <motion.span
                         key={total}
@@ -158,11 +158,11 @@ export function Booking({ value, onChange }: { value: BookingChoice; onChange: (
                   key="form"
                   noValidate
                   onSubmit={onSubmit}
-                  className="grid gap-6"
+                  className="grid min-w-0 gap-6"
                   exit={{ opacity: 0, y: -motionTokens.distance.md }}
                   transition={{ duration: motionTokens.duration.fast }}
                 >
-                  <fieldset>
+                  <fieldset className="min-w-0">
                     <legend className="mb-3 font-semibold">Формат</legend>
                     <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                       {formats.map((f) => (
@@ -171,7 +171,7 @@ export function Booking({ value, onChange }: { value: BookingChoice; onChange: (
                           type="button"
                           aria-pressed={f.id === value.format}
                           onClick={() => onChange({ ...value, format: f.id })}
-                          className={`rounded-xl border-2 px-3 py-2.5 text-sm font-semibold transition ${
+                          className={`min-w-0 rounded-xl border-2 px-2 py-2.5 text-sm font-semibold transition sm:px-3 ${
                             f.id === value.format ? 'border-volt bg-volt/10' : 'border-chalk/10 hover:border-chalk/30'
                           }`}
                         >
@@ -181,9 +181,9 @@ export function Booking({ value, onChange }: { value: BookingChoice; onChange: (
                     </div>
                   </fieldset>
 
-                  <fieldset>
+                  <fieldset className="min-w-0">
                     <legend className="mb-3 font-semibold">День</legend>
-                    <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-7 sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
+                    <div className="flex max-w-full gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [-webkit-overflow-scrolling:touch] sm:grid sm:grid-cols-7 sm:overflow-visible [&::-webkit-scrollbar]:hidden">
                       {days.map((d, index) => (
                         <button
                           key={d.label}
@@ -204,11 +204,11 @@ export function Booking({ value, onChange }: { value: BookingChoice; onChange: (
                     </div>
                   </fieldset>
 
-                  <fieldset>
+                  <fieldset className="min-w-0">
                     <legend id={fieldId('time')} tabIndex={-1} className="mb-3 font-semibold outline-none">
                       Время
                     </legend>
-                    <div className="grid grid-cols-4 gap-2 sm:grid-cols-7">
+                    <div className="grid grid-cols-4 gap-1.5 sm:grid-cols-7 sm:gap-2">
                       {timeSlots.map((slot, index) => {
                         const busy = isBusy(day, index)
                         return (
